@@ -1,4 +1,5 @@
 import SwiftUI
+import NetworkRequests
 
 /// An enumeration of navigation options in the app.
 enum NavigationOptions: Equatable, Hashable, Identifiable, CaseIterable {
@@ -10,7 +11,7 @@ enum NavigationOptions: Equatable, Hashable, Identifiable, CaseIterable {
     
     var name: LocalizedStringResource {
         switch self {
-        case .requests: return LocalizedStringResource("Requests", comment: "Title for the Requests tab, shown in the sidebar.")
+        case .requests: return LocalizedStringResource("Network Requests", comment: "Title for the Requests tab, shown in the sidebar.")
         }
     }
     
@@ -23,7 +24,7 @@ enum NavigationOptions: Equatable, Hashable, Identifiable, CaseIterable {
     /// A view builder that the split view uses to show a view for the selected navigation option.
     @MainActor @ViewBuilder func viewForPage() -> some View {
         switch self {
-        case .requests: Text("Requests")
+        case .requests: NetworkExampleView()
         }
     }
 }

@@ -13,12 +13,16 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "AppFeature"
+            name: "AppFeature",
+            dependencies: ["NetworkRequests"]
         ),
         .testTarget(
             name: "AppFeatureTests",
             dependencies: ["AppFeature"]
         ),
+        .target(name: "NetworkRequests"),
+        .testTarget(name: "NetworkRequestsTests",
+                    dependencies: ["NetworkRequests"])
     ]
 )
 
