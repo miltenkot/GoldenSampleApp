@@ -4,8 +4,8 @@ import Foundation
 
 @MainActor
 protocol NetworkServiceProtocol {
-    func get<T: Decodable>(_ url: URL) async throws -> T
-    func get<T: Decodable>(_ url: URL, parameters: [String: String]) async throws -> T
+    func get<T: Decodable>(_ url: URL) async throws(NetworkingError) -> T
+    func get<T: Decodable>(_ url: URL, parameters: [String: String]) async throws(NetworkingError) -> T
     func post<T: Encodable>(_ url: URL, body: T) async throws(NetworkingError)
 }
 
@@ -13,9 +13,15 @@ protocol NetworkServiceProtocol {
 
 @MainActor
 final class NetworkService: NetworkServiceProtocol {
-    func get<T: Decodable>(_ url: URL) async throws -> T {
+    let session: URLSession
+    
+    init(session: URLSession = URLSession.shared) {
+        self.session = session
+    }
+    
+    func get<T: Decodable>(_ url: URL) async throws(NetworkingError) -> T {
         do {
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let (data, response) = try await session.data(from: url)
             try validate(response)
             return try decode(data)
         } catch {
@@ -23,15 +29,11 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
-    func get<T: Decodable>(_ url: URL, parameters: [String: String]) async throws -> T {
+    func get<T: Decodable>(_ url: URL, parameters: [String: String]) async throws(NetworkingError) -> T {
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         components.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
-        
-        guard let finalURL = components.url else {
-            throw URLError(.badURL)
-        }
-        
-        return try await get(finalURL)
+        // // components.url always returns a non-nil URL as long as the input URL is valid (non-nil)
+        return try await get(components.url!)
     }
     
     func post<T: Encodable>(_ url: URL, body: T) async throws(NetworkingError) {
@@ -41,7 +43,7 @@ final class NetworkService: NetworkServiceProtocol {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = try JSONEncoder().encode(body)
             
-            let (_, response) = try await URLSession.shared.data(for: request)
+            let (_, response) = try await session.data(for: request)
             try validate(response)
         } catch {
             throw map(error)
@@ -53,7 +55,8 @@ final class NetworkService: NetworkServiceProtocol {
     private func validate(_ response: URLResponse) throws {
         guard let httpResponse = response as? HTTPURLResponse,
               (200...299).contains(httpResponse.statusCode) else {
-            throw NetworkingError.invalidStatusCode((response as? HTTPURLResponse)?.statusCode ?? -1)
+            // The forced unwrap (response as? HTTPURLResponse)! inside the else block cannot be nil, since the guard ensures response is an HTTPURLResponse. Thus, the case of it being nil does not occur.
+            throw NetworkingError.invalidStatusCode((response as? HTTPURLResponse)!.statusCode)
         }
     }
     

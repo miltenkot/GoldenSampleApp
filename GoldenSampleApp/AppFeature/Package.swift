@@ -11,16 +11,24 @@ let package = Package(
     products: [
         .singleTargetLibrary("AppFeature")
     ],
+    dependencies: [
+        .package(url: "https://github.com/hmlongco/Factory", from: "2.5.3"),
+    ],
     targets: [
         .target(
             name: "AppFeature",
-            dependencies: ["NetworkRequests"]
+            dependencies: [
+                "NetworkRequests"
+            ]
         ),
         .testTarget(
             name: "AppFeatureTests",
             dependencies: ["AppFeature"]
         ),
-        .target(name: "NetworkRequests"),
+        .target(name: "NetworkRequests",
+                dependencies: [
+                    .product(name: "FactoryKit", package: "Factory")
+                ]),
         .testTarget(name: "NetworkRequestsTests",
                     dependencies: ["NetworkRequests"])
     ]

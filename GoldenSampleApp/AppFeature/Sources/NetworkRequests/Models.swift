@@ -1,20 +1,20 @@
 import Foundation
 
-struct Post: Decodable {
+struct Post: Codable {
     let userId: Int
     let id: Int
     let title: String
     let body: String
 }
 
-struct Comment: Decodable, Identifiable {
+struct Comment: Codable, Identifiable {
     let id: Int
     let name: String
     let email: String
     let body: String
 }
 
-struct Photo: Encodable {
+struct Photo: Codable {
     let albumId: Int
     let id: String
     let title: String
@@ -22,4 +22,4 @@ struct Photo: Encodable {
     let thumbnailUrl: String
 }
 
-struct EmptyPhoto: Encodable {}
+struct EmptyPhoto: Codable {}
