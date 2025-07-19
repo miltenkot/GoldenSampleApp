@@ -24,7 +24,7 @@ enum NavigationOptions: Equatable, Hashable, Identifiable, CaseIterable {
     /// A view builder that the split view uses to show a view for the selected navigation option.
     @MainActor @ViewBuilder func viewForPage() -> some View {
         switch self {
-        case .requests: NetworkExampleView()
+        case .requests: NetworkExampleScreen()
         }
     }
 }
