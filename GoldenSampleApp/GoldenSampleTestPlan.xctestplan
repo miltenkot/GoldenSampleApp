@@ -1,0 +1,41 @@
+{
+  "configurations" : [
+    {
+      "id" : "C8C36BE0-93F0-45B7-87A8-F857E42C2B00",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:GoldenSampleApp.xcodeproj",
+        "identifier" : "2AF0C89D2E3000C1006C11FF",
+        "name" : "GoldenSampleAppTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:AppFeature",
+        "identifier" : "NetworkRequestsTests",
+        "name" : "NetworkRequestsTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:AppFeature",
+        "identifier" : "AppFeatureTests",
+        "name" : "AppFeatureTests"
+      }
+    }
+  ],
+  "version" : 1
+}

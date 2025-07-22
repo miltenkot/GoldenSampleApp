@@ -8,17 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		2AB90B0C2E224C730030979A /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2AB90B0B2E224C730030979A /* AppFeature */; };
+		2AF0C8512E2FFDCB006C11FF /* GoldenSampleTestPlan.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0C8502E2FFDCB006C11FF /* GoldenSampleTestPlan.xctestplan */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2AF0C8A22E3000C1006C11FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AB90A5D2E2239C90030979A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AB90A642E2239C90030979A;
+			remoteInfo = GoldenSampleApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2AB90A652E2239C90030979A /* GoldenSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldenSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB90B092E224C050030979A /* AppFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppFeature; sourceTree = "<group>"; };
+		2AF0C8502E2FFDCB006C11FF /* GoldenSampleTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = GoldenSampleTestPlan.xctestplan; sourceTree = "<group>"; };
+		2AF0C89E2E3000C1006C11FF /* GoldenSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoldenSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2AB90A672E2239C90030979A /* GoldenSampleApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = GoldenSampleApp;
+			sourceTree = "<group>";
+		};
+		2AF0C89F2E3000C1006C11FF /* GoldenSampleAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GoldenSampleAppTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,14 +50,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AF0C89B2E3000C1006C11FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2AB90A5C2E2239C90030979A = {
 			isa = PBXGroup;
 			children = (
+				2AF0C8502E2FFDCB006C11FF /* GoldenSampleTestPlan.xctestplan */,
 				2AB90B092E224C050030979A /* AppFeature */,
 				2AB90A672E2239C90030979A /* GoldenSampleApp */,
+				2AF0C89F2E3000C1006C11FF /* GoldenSampleAppTests */,
 				2AB90B0A2E224C730030979A /* Frameworks */,
 				2AB90A662E2239C90030979A /* Products */,
 			);
@@ -49,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB90A652E2239C90030979A /* GoldenSampleApp.app */,
+				2AF0C89E2E3000C1006C11FF /* GoldenSampleAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +114,29 @@
 			productReference = 2AB90A652E2239C90030979A /* GoldenSampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2AF0C89D2E3000C1006C11FF /* GoldenSampleAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AF0C8A62E3000C1006C11FF /* Build configuration list for PBXNativeTarget "GoldenSampleAppTests" */;
+			buildPhases = (
+				2AF0C89A2E3000C1006C11FF /* Sources */,
+				2AF0C89B2E3000C1006C11FF /* Frameworks */,
+				2AF0C89C2E3000C1006C11FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AF0C8A32E3000C1006C11FF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2AF0C89F2E3000C1006C11FF /* GoldenSampleAppTests */,
+			);
+			name = GoldenSampleAppTests;
+			packageProductDependencies = (
+			);
+			productName = GoldenSampleAppTests;
+			productReference = 2AF0C89E2E3000C1006C11FF /* GoldenSampleAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -98,6 +149,10 @@
 				TargetAttributes = {
 					2AB90A642E2239C90030979A = {
 						CreatedOnToolsVersion = 26.0;
+					};
+					2AF0C89D2E3000C1006C11FF = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = 2AB90A642E2239C90030979A;
 					};
 				};
 			};
@@ -116,12 +171,21 @@
 			projectRoot = "";
 			targets = (
 				2AB90A642E2239C90030979A /* GoldenSampleApp */,
+				2AF0C89D2E3000C1006C11FF /* GoldenSampleAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2AB90A632E2239C90030979A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AF0C8512E2FFDCB006C11FF /* GoldenSampleTestPlan.xctestplan in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AF0C89C2E3000C1006C11FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,7 +202,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2AF0C89A2E3000C1006C11FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2AF0C8A32E3000C1006C11FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AB90A642E2239C90030979A /* GoldenSampleApp */;
+			targetProxy = 2AF0C8A22E3000C1006C11FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2AB90A6E2E2239CB0030979A /* Debug */ = {
@@ -343,6 +422,51 @@
 			};
 			name = Release;
 		};
+		2AF0C8A42E3000C1006C11FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9AKL82KSN5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miltenkot.GoldenSampleAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoldenSampleApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GoldenSampleApp";
+			};
+			name = Debug;
+		};
+		2AF0C8A52E3000C1006C11FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9AKL82KSN5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.miltenkot.GoldenSampleAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoldenSampleApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GoldenSampleApp";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -360,6 +484,15 @@
 			buildConfigurations = (
 				2AB90A712E2239CB0030979A /* Debug */,
 				2AB90A722E2239CB0030979A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AF0C8A62E3000C1006C11FF /* Build configuration list for PBXNativeTarget "GoldenSampleAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AF0C8A42E3000C1006C11FF /* Debug */,
+				2AF0C8A52E3000C1006C11FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
