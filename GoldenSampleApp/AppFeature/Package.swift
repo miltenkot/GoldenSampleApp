@@ -27,10 +27,12 @@ let package = Package(
         ),
         .target(name: "NetworkRequests",
                 dependencies: [
+                    "NetworkService",
                     .product(name: "FactoryKit", package: "Factory")
                 ]),
         .testTarget(name: "NetworkRequestsTests",
-                    dependencies: ["NetworkRequests"])
+                    dependencies: ["NetworkRequests"]),
+        .target(name: "NetworkService")
     ]
 )
 

@@ -3,7 +3,7 @@ import Foundation
 // MARK: - Network Service Protocol
 
 @MainActor
-protocol NetworkServiceProtocol {
+public protocol NetworkServiceProtocol {
     func get<T: Decodable>(_ url: URL) async throws(NetworkingError) -> T
     func get<T: Decodable>(_ url: URL, parameters: [String: String]) async throws(NetworkingError) -> T
     func post<T: Encodable>(_ url: URL, body: T) async throws(NetworkingError)
@@ -12,14 +12,14 @@ protocol NetworkServiceProtocol {
 // MARK: - Network Service Implementation
 
 @MainActor
-final class NetworkService: NetworkServiceProtocol {
+public final class NetworkService: NetworkServiceProtocol {
     let session: URLSession
     
-    init(session: URLSession = URLSession.shared) {
+    public init(session: URLSession = URLSession.shared) {
         self.session = session
     }
     
-    func get<T: Decodable>(_ url: URL) async throws(NetworkingError) -> T {
+    public func get<T: Decodable>(_ url: URL) async throws(NetworkingError) -> T {
         do {
             let (data, response) = try await session.data(from: url)
             try validate(response)
@@ -29,14 +29,14 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
-    func get<T: Decodable>(_ url: URL, parameters: [String: String]) async throws(NetworkingError) -> T {
+    public func get<T: Decodable>(_ url: URL, parameters: [String: String]) async throws(NetworkingError) -> T {
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         components.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
         // // components.url always returns a non-nil URL as long as the input URL is valid (non-nil)
         return try await get(components.url!)
     }
     
-    func post<T: Encodable>(_ url: URL, body: T) async throws(NetworkingError) {
+    public func post<T: Encodable>(_ url: URL, body: T) async throws(NetworkingError) {
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"

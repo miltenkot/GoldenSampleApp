@@ -2,14 +2,14 @@ import Foundation
 
 // MARK: - Network Error
 
-enum NetworkingError: LocalizedError {
+public enum NetworkingError: LocalizedError {
     case encodingFailed(EncodingError)
     case decodingFailed(DecodingError)
     case invalidStatusCode(Int)
     case requestFailed(URLError)
     case otherError(Error)
     
-    var errorDescription: String?    {
+    public var errorDescription: String?    {
         switch self {
         case .encodingFailed(let error):
             return "Encoding failed: \(error)"
@@ -26,7 +26,7 @@ enum NetworkingError: LocalizedError {
 }
 
 extension NetworkingError: Equatable {
-    static func == (lhs: NetworkingError, rhs: NetworkingError) -> Bool {
+    public static func == (lhs: NetworkingError, rhs: NetworkingError) -> Bool {
         switch (lhs, rhs) {
         case (.encodingFailed(let lhsError), .encodingFailed(let rhsError)):
             return "\(lhsError)" == "\(rhsError)"

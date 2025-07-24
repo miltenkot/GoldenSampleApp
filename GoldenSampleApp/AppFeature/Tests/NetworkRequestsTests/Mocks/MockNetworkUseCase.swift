@@ -1,3 +1,4 @@
+@_exported import NetworkService
 @testable import NetworkRequests
 
 @MainActor

@@ -1,4 +1,5 @@
 import Foundation
+@_exported import NetworkService
 @testable import NetworkRequests
 
 @MainActor

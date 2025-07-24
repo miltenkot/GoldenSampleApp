@@ -1,4 +1,5 @@
 import SwiftUI
+import NetworkService
 
 struct RequestSectionView<Content: View>: View {
     let error: NetworkingError?

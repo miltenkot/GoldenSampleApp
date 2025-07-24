@@ -1,4 +1,5 @@
 import SwiftUI
+import NetworkService
 
 struct CommentsSectionView: View {
     let error: NetworkingError?

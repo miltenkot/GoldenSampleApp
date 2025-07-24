@@ -1,4 +1,5 @@
 import SwiftUI
+import NetworkService
 
 struct PostSectionView: View {
     let error: NetworkingError?

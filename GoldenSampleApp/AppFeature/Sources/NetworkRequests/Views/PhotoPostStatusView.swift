@@ -1,4 +1,5 @@
 import SwiftUI
+import NetworkService
 
 struct PhotoPostStatusView: View {
     let error: NetworkingError?
