@@ -32,7 +32,11 @@ let package = Package(
                 ]),
         .testTarget(name: "NetworkRequestsTests",
                     dependencies: ["NetworkRequests"]),
-        .target(name: "NetworkService")
+        .target(name: "NetworkService"),
+        .testTarget(name: "NetworkServiceTests",
+                    dependencies: [
+                        "NetworkService"
+                    ])
     ]
 )
 

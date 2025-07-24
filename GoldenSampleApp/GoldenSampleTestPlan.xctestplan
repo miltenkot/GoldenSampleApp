@@ -24,16 +24,23 @@
       "parallelizable" : false,
       "target" : {
         "containerPath" : "container:AppFeature",
-        "identifier" : "NetworkRequestsTests",
-        "name" : "NetworkRequestsTests"
+        "identifier" : "AppFeatureTests",
+        "name" : "AppFeatureTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:AppFeature",
+        "identifier" : "NetworkServiceTests",
+        "name" : "NetworkServiceTests"
       }
     },
     {
       "parallelizable" : false,
       "target" : {
         "containerPath" : "container:AppFeature",
-        "identifier" : "AppFeatureTests",
-        "name" : "AppFeatureTests"
+        "identifier" : "NetworkRequestsTests",
+        "name" : "NetworkRequestsTests"
       }
     }
   ],
