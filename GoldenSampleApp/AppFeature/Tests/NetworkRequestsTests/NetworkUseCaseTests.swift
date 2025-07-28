@@ -1,17 +1,22 @@
 import Testing
 import SwiftUI
 import Foundation
+import FactoryKit
+import FactoryTesting
 
 @testable import NetworkRequests
 
 @MainActor
+@Suite(.container)
 struct NetworkUseCaseTests {
     var sut: NetworkUseCase!
     var mockNetworkService: MockNetworkService!
     
     init() {
-        mockNetworkService = MockNetworkService()
-        sut = NetworkUseCase(networkService: mockNetworkService)
+        let mock = MockNetworkService()
+        Container.shared.networkService.register { mock }
+        self.mockNetworkService = mock
+        self.sut = NetworkUseCase()
     }
     
     // MARK: - fetchPost Tests

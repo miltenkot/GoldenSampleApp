@@ -1,12 +1,13 @@
 import SwiftUI
 import NetworkService
+import FactoryKit
 
 // MARK: - ViewModel
 
 @MainActor
 @Observable
 final class NetworkModel {
-    private let networkUseCase: NetworkUseCaseProtocol
+    @ObservationIgnored @Injected(\.networkUseCase) private var networkUseCase
     
     var post: Post?
     var comments: [Comment] = []
@@ -17,10 +18,6 @@ final class NetworkModel {
     var postInvalidPhotoError: NetworkingError?
     
     var showProgressView = false
-    
-    init(networkUseCase: NetworkUseCaseProtocol = NetworkUseCase()) {
-        self.networkUseCase = networkUseCase
-    }
     
     func fetchData() async {
         showProgressView = true

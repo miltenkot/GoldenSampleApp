@@ -1,13 +1,7 @@
-//
-//  NetworkUseCase.swift
-//  AppFeature
-//
-//  Created by Bartlomiej Lanczyk on 19/07/2025.
-//
-
 import Foundation
 import SwiftUI
 import NetworkService
+import FactoryKit
 
 @MainActor
 protocol NetworkUseCaseProtocol {
@@ -19,11 +13,7 @@ protocol NetworkUseCaseProtocol {
 
 @MainActor
 final class NetworkUseCase: NetworkUseCaseProtocol {
-    private let networkService: NetworkServiceProtocol
-    
-    init(networkService: NetworkServiceProtocol = NetworkService()) {
-        self.networkService = networkService
-    }
+    @ObservationIgnored @Injected(\.networkService) private var networkService
     
     func fetchPost() async throws(NetworkingError) -> Post? {
         try await networkService.get(URL(string: Constants.postURL)!)

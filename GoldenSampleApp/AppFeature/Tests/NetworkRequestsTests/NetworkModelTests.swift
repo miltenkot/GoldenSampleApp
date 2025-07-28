@@ -1,10 +1,13 @@
 import Testing
 import SwiftUI
 import Foundation
+import FactoryKit
+import FactoryTesting
 
 @testable import NetworkRequests
 
 @MainActor
+@Suite(.container)
 struct NetworkModelTests {
 
     // MARK: - Properties
@@ -15,8 +18,10 @@ struct NetworkModelTests {
     // MARK: - Setup and Teardown
 
     init() {
-        mockNetworkUseCase = MockNetworkUseCase()
-        sut = NetworkModel(networkUseCase: mockNetworkUseCase)
+        let mock = MockNetworkUseCase()
+        Container.shared.networkUseCase.register { mock }
+        mockNetworkUseCase = mock
+        sut = NetworkModel()
     }
 
     @Test func reset() async {

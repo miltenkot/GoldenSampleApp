@@ -31,7 +31,8 @@ let package = Package(
                     .product(name: "FactoryKit", package: "Factory")
                 ]),
         .testTarget(name: "NetworkRequestsTests",
-                    dependencies: ["NetworkRequests"]),
+                    dependencies: ["NetworkRequests",
+                                   .product(name: "FactoryTesting", package: "Factory")]),
         .target(name: "NetworkService"),
         .testTarget(name: "NetworkServiceTests",
                     dependencies: [
